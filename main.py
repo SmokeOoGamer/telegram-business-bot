@@ -1,9 +1,30 @@
 import requests
 from flask import Flask, request, jsonify
 
-# Replace the placeholders below with your actual Telegram Bot token and Google Gemini API key.
-BOT_TOKEN = "7562945278:AAEZB5CzgMrOpGstwiYTqykvY_ihFi_Fi7Y"
-GEMINI_API_KEY = "AIzaSyBneC_AkW7BamcSeNstFggFZkGt9xYp0o4"
+"""
+Configuration for the Telegram business bot.
+
+The bot token and Gemini API key are defined below. These values can be
+overridden by setting environment variables named `BOT_TOKEN` and
+`GEMINI_API_KEY` respectively. If the environment variables are not set,
+the constants defined here will be used as defaults.
+
+Important: Keep these keys secret. Do not commit your real tokens to a
+public repository unless you have rotated them and understand the
+security implications.
+"""
+
+import os
+
+# Telegram Bot token. This value can be overridden by the BOT_TOKEN
+# environment variable at runtime.
+BOT_TOKEN = os.getenv("BOT_TOKEN", "7562945278:AAF-VvPkc-r2SlLL_3Z3ylgA_e9ePcwAMjM")
+
+# Google Gemini API key. This value can be overridden by the
+# GEMINI_API_KEY environment variable at runtime.
+GEMINI_API_KEY = os.getenv(
+    "GEMINI_API_KEY", "AIzaSyBneC_AkW7BamcSeNstFggFZkGt9xYp0o4"
+)
 
 # Initialize the Flask app
 app = Flask(__name__)
